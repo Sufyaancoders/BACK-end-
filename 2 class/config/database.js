@@ -1,7 +1,16 @@
 // connnecting to database
 const mongoose =require('mongoose');
+// npm init -y
+// npm i express
+// npm i mongoose
+// npm i dotenv
+// npm i nodemon --save-dev
+// npm i cors
+
+
 //step 1: install i mongoose --> npm i mongoose
 //step 2: install dotenv for accessing environment variables --> npm i dotenv
+
 // dotenv is a package that allows us to use environment variables
 //example: process.env.PORT
 
