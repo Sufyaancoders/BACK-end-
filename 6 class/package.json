@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "bcryptjs-react": "^2.4.6",
+    "cloudinary": "^2.6.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-fileupload": "^1.5.1",
+    "mongoose": "^8.13.2"
+  },
+  "name": "6-class",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
