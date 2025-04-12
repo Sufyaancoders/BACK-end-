@@ -58,10 +58,9 @@ exports.localFileUpload = async (req, res) => {
 // check in postment input the data in body on form-data  
 exports.imageUpload = async (req, res) => {
     try {
-        // Data fetch
-        const {name, email, tags} = req.body;
-        console.log("Request body:", req.body);
-
+         // Data fetch
+         const {name, email, tags} = req.body;
+         console.log("Request body:", req.body);
         // Get image file
         const image = req.files.imageFile;
         console.log("Image file:", image);
@@ -93,19 +92,30 @@ exports.imageUpload = async (req, res) => {
         
         // Create a new file entry in the database
         const newFile = await File.create({
+            // fileName: image.name,
+            // filePath: result.secure_url,
+            // fileType: image.mimetype,
+            // fileSize: image.size,
+            // public_id: result.public_id,
+            // secure_url: result.secure_url
             fileName: image.name,
             filePath: result.secure_url,
             fileType: image.mimetype,
             fileSize: image.size,
             public_id: result.public_id,
-            secure_url: result.secure_url
+            secure_url: result.secure_url,
+            // email: email  // Save the email from the request
+            email: req.body.email || "fallback@example.com"  // Set a fallback
         });
-        
+        // Move this BEFORE creating the document
+console.log("Email from request:", req.body.email);
+        console.log("Created file document:", newFile);
         return res.status(200).json({
             success: true,
             message: "Image uploaded successfully",
             data: newFile,
         });
+        console.log("Email from request:", req.body.email);
         
     } catch (error) {
         console.error(error);
@@ -115,7 +125,9 @@ exports.imageUpload = async (req, res) => {
             error: error.message
         });
     }
-}
+}// After creating the document
+console.log("Created document fields:", Object.keys(newFile._doc));
+console.log("Document email:", newFile.email);
 
 // This function uploads a video to Cloudinary and returns the result.
 
